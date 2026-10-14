@@ -1,0 +1,52 @@
+=== 1. TelcoCo tenant: only its own rows ===
+SET
+ client  | count 
+---------+-------
+ TelcoCo |  4600
+(1 row)
+
+ client  
+---------
+ TelcoCo
+(1 row)
+
+--- masked schema (expect permission denied) ---
+ERROR:  permission denied for schema masked
+LINE 1: SELECT * FROM masked.dim_asset_owner_masked LIMIT 1;
+                      ^
+RESET
+=== 2. EnergyCo tenant ===
+SET
+  client  | count 
+----------+-------
+ EnergyCo |  2200
+(1 row)
+
+RESET
+=== 3. Analyst: all clients, masked data, no restricted ===
+SET
+  client  | count 
+----------+-------
+ EnergyCo |  2200
+ GovNet   |  5200
+ TelcoCo  |  4600
+(3 rows)
+
+ masked_rows 
+-------------
+          60
+(1 row)
+
+--- restricted schema (expect permission denied) ---
+ERROR:  permission denied for schema restricted
+LINE 1: SELECT * FROM restricted.asset_owner_restricted LIMIT 1;
+                      ^
+RESET
+=== 4. Governance: sees restricted PII ===
+SET
+ restricted_rows 
+-----------------
+              60
+(1 row)
+
+RESET
