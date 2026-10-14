@@ -89,7 +89,7 @@ A rate of 0.00 means below 0.5%, not a proven zero.
 
 ## Run it
 
-Requirements: Docker Desktop, Python 3.11. On Git Bash for Windows, prefix `docker exec` and `docker compose run` commands with `MSYS_NO_PATHCONV=1`.
+Requirements: Docker Desktop, Python 3.13. On Git Bash for Windows, prefix `docker exec` and `docker compose run` commands with `MSYS_NO_PATHCONV=1`.
 
 ```bash
 cp .env.example .env            # then set PG_ADMIN_PASSWORD to a long random value
