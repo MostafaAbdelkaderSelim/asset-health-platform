@@ -10,3 +10,4 @@ dbt/logs/
 
 data/audit/
 .env
+data/ml/
