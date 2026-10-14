@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: asset_owner_restricted
+    description: "RESTRICTED. Raw owner PII. Access limited to the data governance team."
+    meta:
+      contains_pii: true
+      access: restricted
+    columns:
+      - name: asset_id
+        data_tests: [unique, not_null]
+      - name: owner_name
+        description: "Owner full name (PII)."
+        meta:
+          pii: true
+      - name: owner_email
+        description: "Owner email (PII)."
+        meta:
+          pii: true
+
+  - name: dim_asset_owner_masked
+    description: "Masked and pseudonymised owner data, safe for analytics."
+    meta:
+      contains_pii: false
+      access: internal
+    columns:
+      - name: asset_id
+        data_tests: [unique, not_null]
+      - name: owner_pseudo_id
+        description: "Salted hash of the owner email. Same person gives the same id; not reversible without the salt."
