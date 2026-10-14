@@ -33,7 +33,7 @@ for asset_id, g in df.groupby("asset_id"):
         mu, sd = base.mean(), base.std()
         if not (np.isfinite(mu) and np.isfinite(sd)) or sd == 0:
             continue
-        z = ((g[m].rolling(WINDOW, min_periods=WINDOW // 2).mean() - mu) / sd).to_numpy()
+        z = ((g[m].rolling(WINDOW, min_periods=WINDOW // 2).mean() - mu) / sd).to_numpy(copy=True)
         z[:split] = np.nan
         with np.errstate(invalid="ignore"):
             hits = np.flatnonzero(z >= THRESHOLD)
