@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: dim_asset
+    columns:
+      - name: asset_key
+        data_tests: [unique, not_null]
+      - name: asset_id
+        data_tests: [unique, not_null]
+      - name: client
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [TelcoCo, EnergyCo, GovNet]
+      - name: asset_type
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [router, switch, cell_tower, transformer, pump, motor]
+
+  - name: fct_telemetry
+    columns:
+      - name: event_id
+        data_tests: [unique, not_null]
+      - name: asset_key
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_asset')
+                field: asset_key

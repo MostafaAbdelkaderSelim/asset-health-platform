@@ -1,0 +1,9 @@
+asset_health:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: asset_health.duckdb
+      threads: 1
+      extensions:
+        - delta

@@ -3,3 +3,7 @@ __pycache__/
 data/*.jsonl
 
 data/lake/
+
+dbt/*.duckdb
+dbt/target/
+dbt/logs/

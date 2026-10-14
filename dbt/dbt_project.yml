@@ -1,0 +1,13 @@
+name: asset_health
+version: "1.0.0"
+profile: asset_health
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+
+vars:
+  silver_path: "../data/lake/silver/telemetry"
+
+models:
+  asset_health:
+    +materialized: table
