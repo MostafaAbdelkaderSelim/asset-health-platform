@@ -1,0 +1,35 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r airflow/requirements.txt faker
+
+      - name: Python syntax check
+        run: python -m compileall -q simulator ingestion ml governance tests
+
+      - name: Generate simulator data
+        run: |
+          python simulator/assets.py
+          python simulator/telemetry.py
+
+      - name: Check simulator output
+        run: python tests/check_simulator.py
+
+      - name: Parse dbt project
+        run: cd dbt && DBT_PROFILES_DIR=. dbt parse
+
+      - name: Validate docker compose file
+        run: PG_ADMIN_PASSWORD=ci-dummy docker compose config --quiet
