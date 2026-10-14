@@ -3,11 +3,13 @@ import os
 import duckdb
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv()  # does not override variables already set (e.g. inside Airflow)
 
 PW = os.environ["PG_ADMIN_PASSWORD"]
+HOST = os.environ.get("PG_HOST", "localhost")
+PORT = os.environ.get("PG_PORT", "5433")
 PG_CONN = (
-    "host=localhost port=5433 dbname=assethealth "
+    f"host={HOST} port={PORT} dbname=assethealth "
     f"user=admin password={PW}"
 )
 

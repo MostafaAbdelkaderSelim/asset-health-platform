@@ -11,3 +11,4 @@ dbt/logs/
 data/audit/
 .env
 data/ml/
+docs/dag_test_output.txt
