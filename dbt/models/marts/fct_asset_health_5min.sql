@@ -1,4 +1,5 @@
 select
+    asset_id,
     asset_key,
     time_bucket(interval '5 minutes', event_ts) as bucket_start,
     count(*) as readings,
@@ -10,4 +11,4 @@ select
     avg(packet_loss_pct) as avg_packet_loss_pct,
     sum(case when has_sensor_error then 1 else 0 end) as sensor_error_readings
 from {{ ref('fct_telemetry') }}
-group by 1, 2
+group by 1, 2, 3

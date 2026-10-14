@@ -1,0 +1,7 @@
+snapshots:
+  - name: snap_asset
+    relation: ref('stg_assets_public')
+    config:
+      unique_key: asset_id
+      strategy: check
+      check_cols: [site]

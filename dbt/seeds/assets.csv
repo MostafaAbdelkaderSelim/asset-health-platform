@@ -1,6 +1,6 @@
 asset_id,client,asset_type,site,vendor,install_date,owner_name,owner_email
-AST-0001,GovNet,router,Cairo,Siemens,2024-03-20,Patrick Sanchez,jillrhodes@example.net
-AST-0002,TelcoCo,router,Alexandria,Cisco,2019-07-09,Amanda Davis,williamjohnson@example.org
+AST-0001,GovNet,router,Luxor,Siemens,2024-03-20,Patrick Sanchez,jillrhodes@example.net
+AST-0002,TelcoCo,router,Luxor,Cisco,2019-07-09,Amanda Davis,williamjohnson@example.org
 AST-0003,GovNet,router,Aswan,ABB,2024-11-13,Kimberly Robinson,lisa02@example.net
 AST-0004,TelcoCo,router,Cairo,Huawei,2022-05-17,Christopher Bernard,curtis61@example.com
 AST-0005,TelcoCo,cell_tower,Aswan,Cisco,2021-09-14,Renee Blair,dudleynicholas@example.net

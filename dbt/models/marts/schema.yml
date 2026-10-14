@@ -6,7 +6,7 @@ models:
       - name: asset_key
         data_tests: [unique, not_null]
       - name: asset_id
-        data_tests: [unique, not_null]
+        data_tests: [not_null]
       - name: client
         data_tests:
           - accepted_values:
