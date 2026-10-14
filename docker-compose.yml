@@ -27,3 +27,15 @@ services:
     environment:
       KAFKA_CLUSTERS_0_NAME: local
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
+
+
+  spark:
+    image: apache/spark:3.5.3-python3
+    container_name: spark
+    user: root
+    profiles: ["tools"]
+    working_dir: /app
+    volumes:
+      - ./:/app
+    depends_on:
+      - kafka
