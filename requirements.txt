@@ -2,3 +2,5 @@ faker
 confluent-kafka
 dbt-duckdb
 pandas
+
+python-dotenv
